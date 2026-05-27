@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/static/images/favicon.svg" alt="ORBIT logo" width="180">
+  <img src="docs/static/images/favicon.svg" alt="ORBIT logo" width="120">
 </p>
 
 <h1 align="center">ORBIT: Object-Relation Bridging with Interaction History for VLA Policies</h1>
