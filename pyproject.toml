@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbit-vla"
+version = "0.1.0"
+description = "Object-relation semantic carriers and rollout-conditioned selection for VLA policies."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "ORBIT Authors"}
+]
+dependencies = [
+  "numpy>=1.23",
+  "Pillow>=9.0",
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "ruff>=0.4"
+]
+
+[project.scripts]
+orbit-build-graph = "orbit_vla.cli.build_graph:main"
+orbit-build-carriers = "orbit_vla.cli.build_carriers:main"
+orbit-summarize-rollouts = "orbit_vla.cli.summarize_rollouts:main"
+orbit-selector-replay = "orbit_vla.cli.selector_replay:main"
+
+[tool.setuptools]
+packages = [
+  "orbit_vla",
+  "orbit_vla.frames",
+  "orbit_vla.graph",
+  "orbit_vla.selection",
+  "orbit_vla.carriers",
+  "orbit_vla.adaptation",
+  "orbit_vla.evaluation",
+  "orbit_vla.io",
+  "orbit_vla.cli"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

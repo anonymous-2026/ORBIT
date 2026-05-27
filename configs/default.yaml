@@ -1,0 +1,35 @@
+graph:
+  max_objects: 3
+  max_relations: 3
+  near_threshold: 0.25
+  overlap_threshold: 0.05
+  reachability_threshold: 0.35
+
+carrier:
+  styles:
+    - IFRO
+    - SSP
+    - DCSM
+  image_size: 1080
+  max_text_objects: 3
+  max_text_relations: 3
+
+selector:
+  alpha: 0.6
+  actions:
+    - carrier_mode: text-only
+      relation_level: object-only
+      history_mode: off
+    - carrier_mode: text-only
+      relation_level: object+relation
+      history_mode: off
+    - carrier_mode: visual-only
+      relation_level: object+relation
+      history_mode: off
+    - carrier_mode: hybrid
+      relation_level: object+relation
+      history_mode: off
+    - carrier_mode: hybrid
+      relation_level: object+relation
+      history_mode: reward-filtered
+

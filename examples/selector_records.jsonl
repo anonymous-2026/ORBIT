@@ -1,0 +1,4 @@
+{"task_id":"fries_serving_example","state":{"graph_confidence":0.9,"relation_failure":1.0,"visual_ambiguity":0.0,"history_useful":0.0,"distractor_present":1.0,"carrier_consistent":1.0},"action":"text_relation","reward":0.92,"success":true,"harmful":false,"reason":"text relation resolved the serving relation"}
+{"task_id":"breakfast_setup_example","state":{"graph_confidence":0.88,"relation_failure":1.0,"visual_ambiguity":1.0,"history_useful":1.0,"distractor_present":1.0,"carrier_consistent":1.0},"action":"hybrid_history","reward":0.95,"success":true,"harmful":false,"reason":"hybrid and memory helped final arrangement"}
+{"task_id":"condiment_relation_example","state":{"graph_confidence":0.93,"relation_failure":1.0,"visual_ambiguity":1.0,"history_useful":0.0,"distractor_present":1.0,"carrier_consistent":1.0},"action":"visual_relation","reward":0.90,"success":true,"harmful":false,"reason":"visual relation clarified target placement"}
+

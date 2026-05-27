@@ -1,0 +1,42 @@
+{
+  "scene_id": "food_serving_tabletop_example",
+  "objects": [
+    {
+      "id": "T1",
+      "name": "fries tray",
+      "role": "target",
+      "bbox": [0.34, 0.42, 0.48, 0.56],
+      "confidence": 0.94,
+      "source": "proposal_json",
+      "view": "tpv"
+    },
+    {
+      "id": "R1",
+      "name": "dinner plate",
+      "role": "reference",
+      "bbox": [0.55, 0.43, 0.70, 0.58],
+      "confidence": 0.96,
+      "source": "proposal_json",
+      "view": "tpv"
+    },
+    {
+      "id": "C1",
+      "name": "ketchup",
+      "role": "condiment",
+      "bbox": [0.72, 0.32, 0.82, 0.50],
+      "confidence": 0.91,
+      "source": "proposal_json",
+      "view": "tpv"
+    },
+    {
+      "id": "D1",
+      "name": "red bottle",
+      "role": "distractor",
+      "bbox": [0.19, 0.30, 0.30, 0.54],
+      "confidence": 0.88,
+      "source": "proposal_json",
+      "view": "tpv"
+    }
+  ]
+}
+

@@ -1,0 +1,13 @@
+{
+  "task_id": "fries_serving_example",
+  "instruction": "I bought fries.",
+  "task_type": "semantic_extension",
+  "executable_goal": "prepare a food-serving setup with the fries support on the plate and ketchup near the plate",
+  "required_carrier": "hybrid",
+  "required_history": "off",
+  "metadata": {
+    "bounded_frame": "food_serving",
+    "expected_failure": "raw short intent may select a salient unrelated bottle instead of the food-serving support"
+  }
+}
+

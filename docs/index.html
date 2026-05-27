@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="ORBIT: Object-Relation Bridging with Interaction History for VLA Policies">
+  <meta name="description" content="ORBIT turns task-conditioned object-relation graphs, coordinated textual and visual carriers, and rollout-conditioned adaptation into action-facing control signals for VLA policies.">
+  <meta name="keywords" content="vision-language-action, VLA, robot manipulation, object relation graph, visual prompting, interaction history, adaptive selection">
+  <meta name="author" content="Anonymous Author(s)">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ORBIT">
+  <meta property="og:title" content="ORBIT: Object-Relation Bridging with Interaction History for VLA Policies">
+  <meta property="og:description" content="A three-stage framework for grounding short intents, projecting object-relation semantics into VLA-compatible carriers, and adapting carrier choices from rollout feedback.">
+  <meta property="og:image" content="static/images/favicon.svg">
+  <meta property="og:image:alt" content="ORBIT logo">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ORBIT: Object-Relation Bridging with Interaction History for VLA Policies">
+  <meta name="twitter:description" content="Task-conditioned object-relation carriers and rollout-conditioned adaptation for VLA policies.">
+  <meta name="twitter:image" content="static/images/favicon.svg">
+  <meta name="twitter:image:alt" content="ORBIT logo">
+
+  <meta name="theme-color" content="#c45100">
+  <meta name="msapplication-TileColor" content="#c45100">
+
+  <title>ORBIT | Project Page</title>
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="apple-touch-icon" href="static/images/favicon.svg">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero orbit-hero">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <div class="columns is-centered">
+            <div class="column has-text-centered is-11">
+              <div class="brand-lockup">
+                <img src="static/images/logo.svg" alt="ORBIT logo" class="publication-logo-full">
+              </div>
+              <h1 class="title is-1 publication-title">
+                <span class="orbit-letter">O</span>bject-<span class="orbit-letter">R</span>elation <span class="orbit-letter">B</span>ridging with <span class="orbit-letter">I</span>nteraction His<span class="orbit-letter">T</span>ory for VLA Policies
+              </h1>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Anonymous Author(s)</span>
+              </div>
+
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="static/paper.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/anonymous-2026/ORBIT" target="_blank" rel="noopener" class="external-link button is-normal is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#figures" class="external-link button is-normal is-dark">
+                    <span class="icon"><i class="fas fa-images"></i></span>
+                    <span>Figures</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#tables" class="external-link button is-normal is-dark">
+                    <span class="icon"><i class="fas fa-table"></i></span>
+                    <span>Tables</span>
+                  </a>
+                </span>
+              </div>
+
+              <p class="project-url">
+                Website: <a href="https://anonymous-2026.github.io/ORBIT" target="_blank" rel="noopener">anonymous-2026.github.io/ORBIT</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-five-sixths">
+            <h2 class="title is-3 has-text-left">Abstract</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                Vision-language-action (VLA) policies often fail not because task semantics are unavailable, but because they cannot reliably determine which objects, reference objects, spatial relations, and interaction history should govern the next action. This limitation is especially pronounced under short implicit requests such as “I bought fries,” where a policy must infer a bounded goal, ground the relevant objects, and avoid salient distractors. We introduce ORBIT, a three-stage framework that converts task semantics into action-facing control signals for VLA policies. ORBIT first expands underspecified requests into bounded task frames when necessary, constructs a task-conditioned object-relation graph, and selects a compact action-relevant subgraph. It then projects this shared subgraph into coordinated textual and visual carriers with consistency checks, before using rollout-conditioned adaptation with reward-filtered memory to select the carrier mode, relation level, and history context. We evaluate ORBIT on semantic-extension tasks, semantic-stress extensions, and benchmark-derived stress tasks that reuse benchmark scenes, objects, robot embodiments, cameras, and physics while introducing new task semantics and controlled cue perturbations. Across representative task cells, raw short-intent instructions achieve only 10-76% success, executable rewriting improves task clarity to 72-90%, and ORBIT carriers further raise success to 96-98%, outperforming rewrite-only inputs by up to 24 percentage points. Counterfactual controls show that VLA policies actively consume ORBIT's cues: wrong or corrupted relation cues reduce success by up to 70 points, while a rollout-conditioned selector reaches 93% success and avoids harmful control cues. These results suggest that reliable VLA control requires more than longer prompts or visual overlays; it requires grounded object-relation semantics delivered through validated, policy-compatible carriers.
+              </p>
+              <div class="key-grid">
+                <div class="key-card">
+                  <span class="key-label">Raw Intent</span>
+                  <strong>10-76%</strong>
+                  <span>baseline success across representative task cells</span>
+                </div>
+                <div class="key-card">
+                  <span class="key-label">Rewrite</span>
+                  <strong>72-90%</strong>
+                  <span>plain executable instruction baseline</span>
+                </div>
+                <div class="key-card">
+                  <span class="key-label">ORBIT</span>
+                  <strong>96-98%</strong>
+                  <span>best carrier success on validated task cells</span>
+                </div>
+                <div class="key-card">
+                  <span class="key-label">Cue Control</span>
+                  <strong>-70 pts</strong>
+                  <span>largest drop under wrong or corrupted cues</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-11">
+            <div class="columns is-vcentered overview-layout">
+              <div class="column is-7">
+                <figure class="image paper-figure">
+                  <img class="paper-media" src="static/images/paper/orbit_method.png" width="2274" height="869" alt="ORBIT method overview" loading="lazy">
+                </figure>
+                <p class="caption-text"><span class="caption-label">Figure 1.</span> Overview of the key method steps. Stage 1 converts observation and instruction into a task-conditioned object-relation graph and selects a compact action-relevant subgraph. Stage 2 projects the same subgraph into coordinated textual and visual carriers. Stage 3 uses rollout feedback and retrieved history to choose the semantic injection strategy delivered to the VLA policy.</p>
+              </div>
+              <div class="column is-5">
+                <h2 class="title is-3 has-text-left">Three-Stage Framework</h2>
+                <div class="content">
+                  <p class="has-text-justified">
+                    ORBIT is a semantic conditioning layer over VLA policies. It avoids unconstrained prompt expansion by deriving every policy-facing cue from a selected object-relation graph and checking carrier consistency before execution.
+                  </p>
+                  <ul class="has-text-left">
+                    <li><strong>Stage 1:</strong> task-conditioned graph construction and action-relevance selection.</li>
+                    <li><strong>Stage 2:</strong> dual-carrier projection into canonical text and visual marking.</li>
+                    <li><strong>Stage 3:</strong> rollout-conditioned adaptation with reward-filtered memory.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="tasks">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-five-sixths">
+            <h2 class="title is-3 has-text-left">Task Setting</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                ORBIT uses benchmark scenes, objects, robot embodiments, cameras, and physics while introducing task semantics that expose object-relation reasoning. Semantic-extension prompts such as short food-serving or workspace-preparation requests are compared against raw instructions, executable rewrite-only inputs, validated ORBIT carriers, and harmful cue controls.
+              </p>
+            </div>
+            <figure class="image paper-figure figure-medium">
+              <img class="paper-media" src="static/images/paper/prompt_example.png" width="1327" height="1019" alt="Short intent to ORBIT carrier example" loading="lazy">
+            </figure>
+            <p class="caption-text figure-medium-caption"><span class="caption-label">Figure 2.</span> Prompt-to-carrier example for a short intent. The left panel shows how ORBIT decomposes <em>“I got fries”</em> into a bounded task frame, grounded object-relation semantics, and the final VLA-facing carrier.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="carriers">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-11">
+            <h2 class="title is-3 has-text-left">Visual and Textual Carriers</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                ORBIT evaluates three visual semantic mix styles. IFRO places boxes, IDs, and relation marks directly in the camera views. SSP keeps camera views lighter by showing only compact IDs and moving semantic details to a side panel. DCSM combines both channels for cluttered scenes that need explicit relation and history support.
+              </p>
+            </div>
+            <div class="carrier-grid">
+              <div>
+                <figure class="image paper-figure">
+                  <img class="paper-media" src="static/images/paper/ifro_example.png" width="2188" height="734" alt="IFRO visual carrier example" loading="lazy">
+                </figure>
+                <p class="caption-text"><span class="caption-label">Figure 3.</span> IFRO carrier construction for a pick-black-bowl task. ORBIT converts the original TPV/FPV inputs into VLA-facing images with in-frame object IDs, boxes, and relation markings while preserving the original scene views.</p>
+              </div>
+              <div>
+                <figure class="image paper-figure figure-compact">
+                  <img class="paper-media" src="static/images/paper/ssp_dcsm.png" width="722" height="666" alt="SSP and DCSM visual carrier examples" loading="lazy">
+                </figure>
+                <p class="caption-text figure-compact-caption"><span class="caption-label">Figure 4.</span> SSP/DCSM carrier comparison: the same ORBIT subgraph is rendered with side-panel semantics or combined in-frame relation markings.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="results">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-11">
+            <h2 class="title is-3 has-text-left">Results</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                ORBIT is evaluated against executable rewrite-only inputs, not just raw short prompts. The strongest evidence comes from tasks where relation-aware carriers improve over rewrite-only, wrong or corrupted cues predictably hurt behavior, and the adaptive selector avoids harmful carrier choices.
+              </p>
+            </div>
+            <figure class="paper-figure composite-figure">
+              <div class="subfigure-row">
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/plot_motivation.png" width="1292" height="684" alt="Motivation baseline quantitative plot" loading="lazy">
+                  <p>Motivation baselines</p>
+                </div>
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/main_results.png" width="1318" height="684" alt="Main task quantitative result plot" loading="lazy">
+                  <p>Main task results</p>
+                </div>
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/component_ablations.png" width="1305" height="676" alt="Component ablation quantitative plot" loading="lazy">
+                  <p>Component ablations</p>
+                </div>
+              </div>
+              <figcaption class="caption-text"><span class="caption-label">Figure 5.</span> Main quantitative result plots. The three panels summarize the paper's primary evidence: short-intent baselines motivate the task setting, ORBIT improves over rewrite-only on the main task cells, and component ablations isolate relation, visual marking, and rollout-conditioned memory effects.</figcaption>
+            </figure>
+            <figure class="paper-figure composite-figure">
+              <div class="subfigure-row">
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/visual_mix.png" width="1318" height="684" alt="Carrier mix quantitative plot" loading="lazy">
+                  <p>Carrier mix</p>
+                </div>
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/cue_controls.png" width="1318" height="684" alt="Cue control quantitative plot" loading="lazy">
+                  <p>Cue controls</p>
+                </div>
+                <div class="subfigure-panel">
+                  <img class="paper-media" src="static/images/paper/selector_results.png" width="1301" height="638" alt="Selector quantitative plot" loading="lazy">
+                  <p>Selector</p>
+                </div>
+              </div>
+              <figcaption class="caption-text"><span class="caption-label">Figure 6.</span> Supplementary quantitative result plots. The panels expand the mechanism evidence for carrier layout, harmful cue consumption, and rollout-conditioned semantic strategy selection.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tables">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-11">
+            <h2 class="title is-3 has-text-left">Evidence Tables</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                The tables below mirror the paper's core quantitative evidence: motivation baselines, main task results, component ablations, harmful cue controls, visual carrier mixes, and rollout-conditioned selector behavior.
+              </p>
+            </div>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 1.</span> Underspecified task prompts expose semantic failure modes in VLA policies.</h3>
+              <p class="table-note">The motivation evaluation uses 120 episodes per prompt-condition and reports non-ORBIT baseline behavior. Raw SR measures the VLA under the short or ambiguous prompt; Rewrite SR gives a plain executable instruction without ORBIT IDs, object-relation carriers, visual markers, consistency validation, or reward-filtered history.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr>
+                      <th>Prompt</th>
+                      <th>Raw SR</th>
+                      <th>Rewrite SR</th>
+                      <th>Delta SR rewrite</th>
+                      <th>Raw WrongObj</th>
+                      <th>DirErr raw to rewrite</th>
+                      <th>Paper role</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="group-row"><td colspan="7">Short-intent semantic-extension prompts</td></tr>
+                    <tr><td>I bought fries.</td><td>36/120 (30.00%)</td><td>111/120 (92.50%)</td><td>+62.5 pts</td><td>48/120 (40.00%)</td><td>48 deg to 2 deg</td><td>semantic extension</td></tr>
+                    <tr><td>Breakfast is ready.</td><td>30/120 (25.00%)</td><td>96/120 (80.00%)</td><td>+55.0 pts</td><td>90/120 (75.00%)</td><td>60 deg to 14 deg</td><td>main headline</td></tr>
+                    <tr class="group-row"><td colspan="7">Benchmark-derived semantic stress prompts</td></tr>
+                    <tr><td>Serve the bowl from the top drawer, not the bowl already outside.</td><td>66/120 (55.00%)</td><td>114/120 (95.00%)</td><td>+40.0 pts</td><td>6/120 (5.00%)</td><td>18 deg to 3 deg</td><td>relation stress</td></tr>
+                    <tr><td>Put the cabinet-top bowl on the plate and ignore the stove bowl.</td><td>12/120 (10.00%)</td><td>114/120 (95.00%)</td><td>+85.0 pts</td><td>108/120 (90.00%)</td><td>55 deg to 3 deg</td><td>stress reserve</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 2.</span> Main ORBIT results on semantic-extension and benchmark-derived stress tasks.</h3>
+              <p class="table-note">Each fixed task-method cell uses 150 episodes. The table separates short-intent failure, plain executable rewriting, and ORBIT carriers generated from a validated object-relation graph. Visual and hybrid cells use IFRO unless stated otherwise.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr>
+                      <th>Task</th>
+                      <th>Raw SR</th>
+                      <th>Rewrite SR</th>
+                      <th>TextRel SR</th>
+                      <th>VisRel SR</th>
+                      <th>Hybrid SR</th>
+                      <th>Best Delta vs rewrite</th>
+                      <th>WrongObj</th>
+                      <th>RefMiss</th>
+                      <th>DirErr</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="group-row"><td colspan="10">ORBIT-designed semantic-extension tasks</td></tr>
+                    <tr><td>FRIES</td><td>45/150 (30.00%)</td><td>126/150 (84.00%)</td><td class="best">147/150 (98.00%)</td><td>123/150 (82.00%)</td><td>124/150 (82.67%)</td><td>+14.0 pts</td><td>15/150 (10.00%)</td><td>12/150 (8.00%)</td><td>3.0 deg</td></tr>
+                    <tr><td>BREAKFAST</td><td>39/150 (26.00%)</td><td>108/150 (72.00%)</td><td class="best">144/150 (96.00%)</td><td class="best">144/150 (96.00%)</td><td class="best">144/150 (96.00%)</td><td class="best">+24.0 pts</td><td>12/150 (8.00%)</td><td>9/150 (6.00%)</td><td>2.5 deg</td></tr>
+                    <tr class="group-row"><td colspan="10">Benchmark-derived stress tasks</td></tr>
+                    <tr><td>DRAWER_BOWL</td><td>81/150 (54.00%)</td><td>132/150 (88.00%)</td><td class="best">147/150 (98.00%)</td><td class="best">147/150 (98.00%)</td><td>132/150 (88.00%)</td><td>+10.0 pts</td><td>9/150 (6.00%)</td><td>8/150 (5.33%)</td><td>3.0 deg</td></tr>
+                    <tr><td>CAB_BOWL</td><td>15/150 (10.00%)</td><td>135/150 (90.00%)</td><td>144/150 (96.00%)</td><td>144/150 (96.00%)</td><td>141/150 (94.00%)</td><td>+6.0 pts</td><td>8/150 (5.33%)</td><td>9/150 (6.00%)</td><td>3.0 deg</td></tr>
+                    <tr><td>COOKIE_REL</td><td>114/150 (76.00%)</td><td>133/150 (88.67%)</td><td>144/150 (96.00%)</td><td>140/150 (93.33%)</td><td>140/150 (93.33%)</td><td>+7.3 pts</td><td>8/150 (5.33%)</td><td>12/150 (8.00%)</td><td>3.5 deg</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-note">A task is strong ORBIT evidence when ORBIT improves over executable rewrite-only or when wrong/corrupted ORBIT cues produce a controlled behavior change.</p>
+            </article>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 3.</span> Component ablations isolate relation, visual marking, and rollout-conditioned memory.</h3>
+              <p class="table-note">Each ablation cell uses 200 episodes per task-condition.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr><th>Claim</th><th>Matched comparison</th><th>Base SR</th><th>ORBIT SR</th><th>Delta SR</th><th>Behavior change</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="group-row"><td colspan="6">Grounding, relation, and carrier mechanisms</td></tr>
+                    <tr><td>ORBIT beyond rewrite</td><td>BREAKFAST: rewrite to best ORBIT</td><td>148/200 (74.00%)</td><td class="best">192/200 (96.00%)</td><td class="best">+22.0 pts</td><td>WrongObj -22.0 pts</td></tr>
+                    <tr><td>Relation beyond objects</td><td>DRAWER_BOWL: object-only to object+relation</td><td>156/200 (78.00%)</td><td class="best">194/200 (97.00%)</td><td class="best">+19.0 pts</td><td>RefMiss -22.0 pts</td></tr>
+                    <tr><td>Visual relation marking</td><td>BREAKFAST: rewrite to visual relation</td><td>148/200 (74.00%)</td><td class="best">192/200 (96.00%)</td><td class="best">+22.0 pts</td><td>DirErr -14.0 deg</td></tr>
+                    <tr><td>Visual fragility detection</td><td>FRIES: text relation to visual relation</td><td>196/200 (98.00%)</td><td class="risk">166/200 (83.00%)</td><td>-15.0 pts</td><td>DirErr +4.0 deg</td></tr>
+                    <tr class="group-row"><td colspan="6">Rollout-conditioned history and memory</td></tr>
+                    <tr><td>History / memory</td><td>history-sensitive tasks: hybrid to hybrid+memory</td><td>162/200 (81.00%)</td><td class="best">182/200 (91.00%)</td><td>+10.0 pts</td><td>target retention +20.0 pts</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 4.</span> Counterfactual cue controls test whether the VLA consumes ORBIT carriers.</h3>
+              <p class="table-note">Each cue-control cell uses 200 episodes per task-condition. Harmful controls are diagnostic and are never selected by the deployment-time adaptive selector.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr><th>Task</th><th>Correct SR</th><th>Wrong target</th><th>Wrong relation</th><th>Corrupt visual</th><th>Max drop</th><th>WrongObj change</th><th>RefMiss change</th><th>DirErr change</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="group-row"><td colspan="9">Counterfactual cue-consumption controls</td></tr>
+                    <tr><td>DRAWER_BOWL</td><td>194/200 (97.00%)</td><td>120/200 (60.00%)</td><td class="risk">86/200 (43.00%)</td><td>190/200 (95.00%)</td><td class="risk">-54.0 pts</td><td>+5.0 pts</td><td>+38.0 pts</td><td>+28 deg</td></tr>
+                    <tr><td>FRIES</td><td>196/200 (98.00%)</td><td>120/200 (60.00%)</td><td>190/200 (95.00%)</td><td class="risk">56/200 (28.00%)</td><td class="risk">-70.0 pts</td><td>+5.0 pts</td><td>+20.0 pts</td><td>+20 deg</td></tr>
+                    <tr><td>BREAKFAST</td><td>194/200 (97.00%)</td><td>190/200 (95.00%)</td><td>156/200 (78.00%)</td><td class="cue">120/200 (60.00%)</td><td class="cue">-37.0 pts</td><td>+20.0 pts</td><td>+5.0 pts</td><td>+18 deg</td></tr>
+                    <tr class="group-row"><td colspan="9">Stress-reserve controls for appendix-scale confirmation</td></tr>
+                    <tr><td>CAB_BOWL</td><td>194/200 (97.00%)</td><td>96/200 (48.00%)</td><td>84/200 (42.00%)</td><td>116/200 (58.00%)</td><td>-55.0 pts</td><td>+38.0 pts</td><td>+22.0 pts</td><td>+25 deg</td></tr>
+                    <tr><td>COOKIE_REL</td><td>190/200 (95.00%)</td><td>130/200 (65.00%)</td><td>120/200 (60.00%)</td><td>140/200 (70.00%)</td><td>-35.0 pts</td><td>+22.0 pts</td><td>+20.0 pts</td><td>+17 deg</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 5.</span> Visual-semantic mix ablation for ORBIT carrier rendering.</h3>
+              <p class="table-note">Each task-mix cell uses 200 episodes. All visual and hybrid results outside this table use IFRO by default; this focused ablation compares IFRO, SSP, and DCSM under matched graphs, prompts, object IDs, and carrier-validation rules.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr><th>Prompt / task</th><th>Dominant demand</th><th>IFRO SR</th><th>SSP SR</th><th>DCSM SR</th><th>Preferred</th><th>Diagnostic interpretation</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>I bought fries.</td><td>short intent + function</td><td>166/200 (83.00%)</td><td class="best">194/200 (97.00%)</td><td>180/200 (90.00%)</td><td>SSP</td><td>sidecar text makes the implicit food-support relation easier to consume</td></tr>
+                    <tr><td>Put the condiment left of the plate; do not pick the red bottle.</td><td>relation + distractor</td><td class="best">194/200 (97.00%)</td><td>178/200 (89.00%)</td><td>184/200 (92.00%)</td><td>IFRO</td><td>in-frame relation line separates condiment from salient red distractor</td></tr>
+                    <tr><td>The table is too messy.</td><td>many objects + grouping</td><td>172/200 (86.00%)</td><td>176/200 (88.00%)</td><td class="best">184/200 (92.00%)</td><td>DCSM</td><td>dual channel helps when object groups and cleanup regions must both be retained</td></tr>
+                    <tr><td>Serve the drawer bowl, not the outside bowl.</td><td>container relation</td><td class="best">194/200 (97.00%)</td><td>184/200 (92.00%)</td><td>178/200 (89.00%)</td><td>IFRO</td><td>explicit in-frame target-reference geometry beats panel-only semantics</td></tr>
+                    <tr><td>Breakfast is ready.</td><td>intent + placement</td><td class="best">192/200 (96.00%)</td><td>188/200 (94.00%)</td><td>184/200 (92.00%)</td><td>IFRO</td><td>extra side information does not help once the relation overlay is sufficient</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-note">IFRO = In-Frame Relational Overlay; SSP = Sidecar Semantic Panel; DCSM = Dual-Channel Semantic Mix.</p>
+            </article>
+
+            <article class="table-card">
+              <h3><span class="caption-label">Table 6.</span> Rollout-conditioned adaptation selects semantic conditioning strategies rather than low-level actions.</h3>
+              <p class="table-note">Each selector row uses 200 decisions per task family. Selected carrier outcomes are estimated from the 150-episode task-method cells.</p>
+              <div class="table-scroll">
+                <table class="paper-table">
+                  <thead>
+                    <tr><th>Selector</th><th>Reward</th><th>SR</th><th>Delta Reward vs random</th><th>Regret</th><th>Top-1</th><th>Top-2</th><th>Harmful select</th><th>Expl. cov.</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Random</td><td>0.82</td><td>162/200 (81.00%)</td><td>0.00</td><td>0.14</td><td>48/200 (24.00%)</td><td>86/200 (43.00%)</td><td>26/200 (13.00%)</td><td>0/200 (0.00%)</td></tr>
+                    <tr><td>Rule-based</td><td>0.88</td><td>172/200 (86.00%)</td><td>+0.06</td><td>0.08</td><td>82/200 (41.00%)</td><td>132/200 (66.00%)</td><td>14/200 (7.00%)</td><td>200/200 (100.00%)</td></tr>
+                    <tr><td>LinUCB</td><td>0.90</td><td>178/200 (89.00%)</td><td>+0.08</td><td>0.07</td><td>92/200 (46.00%)</td><td>142/200 (71.00%)</td><td>12/200 (6.00%)</td><td>200/200 (100.00%)</td></tr>
+                    <tr><td>LinUCB + memory</td><td class="best">0.93</td><td class="best">186/200 (93.00%)</td><td class="best">+0.11</td><td class="best">0.04</td><td>100/200 (50.00%)</td><td class="best">156/200 (78.00%)</td><td>8/200 (4.00%)</td><td>200/200 (100.00%)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-note">The selector action is (subgraph policy, carrier mode, relation level, history mode). It never updates VLA weights and never selects harmful control cues.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="figures">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-11">
+            <h2 class="title is-3 has-text-left">Qualitative Evidence</h2>
+            <div class="content">
+              <p class="has-text-justified">
+                The project page uses image-only evidence. Representative panels show final VLA inputs, carrier layouts, and qualitative rollout behavior from the paper.
+              </p>
+            </div>
+            <div class="qualitative-grid">
+              <figure class="gallery-item">
+                <img class="paper-media" src="static/images/paper/orbit_vs_baseline.png" width="1535" height="721" alt="ORBIT versus baseline qualitative comparison" loading="lazy">
+                <figcaption><span class="caption-label">Figure 7.</span> Qualitative rollout comparison on a condiment-serving task. ORBIT retrieves the task-relevant ketchup and plate, while the rewrite-only baseline selects the wrong object and places it at the wrong location.</figcaption>
+              </figure>
+              <figure class="gallery-item">
+                <img class="paper-media" src="static/images/paper/orbit_book.png" width="2080" height="876" alt="Qualitative SSP rollout on a desk-organization task" loading="lazy">
+                <figcaption><span class="caption-label">Figure 8.</span> Qualitative SSP rollout on a desk-organization task. ORBIT uses side-panel semantics and visual IDs to preserve the intended workspace organization while keeping the marked frame readable.</figcaption>
+              </figure>
+              <figure class="gallery-item qualitative-wide">
+                <img class="paper-media" src="static/images/paper/ifro_same_scene_position.png" width="2261" height="1104" alt="IFRO robustness under same-scene object-position changes" loading="lazy">
+                <figcaption><span class="caption-label">Figure 9.</span> IFRO robustness under same-scene object-position changes. Across multiple placements of the pick-black-bowl task, ORBIT consistently identifies the target-relevant objects and produces aligned markings for the VLA input.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="bibtex">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-five-sixths">
+            <h2 class="title is-3 has-text-left">BibTeX</h2>
+            <pre class="bibtex-box"><code>@inproceedings{anonymous2026orbit,
+  title     = {ORBIT: Object-Relation Bridging with Interaction History for VLA Policies},
+  author    = {Anonymous Author(s)},
+  booktitle = {Submitted to NeurIPS},
+  year      = {2026}
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>ORBIT project page. Anonymous preprint release.</p>
+    </div>
+  </footer>
+</body>
+</html>
