@@ -1,4 +1,8 @@
-# ORBIT
+<p align="center">
+  <img src="docs/static/images/logo.svg" alt="ORBIT logo" width="520">
+</p>
+
+<h1 align="center">ORBIT: Object-Relation Bridging with Interaction History for VLA Policies</h1>
 
 ORBIT converts selected object-relation semantics and useful rollout history into validated VLA-facing inputs. The code mirrors the paper pipeline:
 
